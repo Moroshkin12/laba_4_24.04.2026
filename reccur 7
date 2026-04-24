@@ -1,4 +1,4 @@
-#Написать рекурсивную функцию для вычисления суммы: S = 2 + 4 + 6 + 8 + ... , 
+#Написать рекурсивную функцию для вычисления суммы: S = 2 + 4 + 6 + 8 + ... ,
 # содержащей N первых членов (N - натуральное число, N < 30, S - цело
 
 def sum_even_recursive(N):
@@ -9,20 +9,18 @@ def sum_even_recursive(N):
 
     try:
         N = int(N)
-    except (ValueError, TypeError):
+    except ValueError:
         return "Ошибка: N должно быть целым числом"
+    except TypeError:
+        return "Ошибка: N должно быть числом"
 
-
-    if N <= 0:
-        return "Ошибка: N должно быть натуральным числом (N > 0)"
-    if N >= 30:
-        return "Ошибка: N должно быть меньше 30"
-
+    if (N <= 0) or (N >= 30):
+        return "Ошибка: (0 < N < 30)!!!"
 
     if N == 1:
         return 2
 
-
     return 2 * N + sum_even_recursive(N - 1)
 
-
+integer = input("Введите N: ")
+print(sum_even_recursive(integer))
