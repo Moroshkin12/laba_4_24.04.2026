@@ -1,0 +1,25 @@
+#Написать рекурсивный алгоритм определения суммы цифр целого числа N
+
+def sum_digits(integer):
+    """
+    Рекурсивная функция для вычисления суммы цифр числа.
+    Работает как с положительными, так и с отрицательными числами.
+    """
+    try:
+        integer = abs(int(integer))
+
+        if integer < 10:
+            return integer
+
+        return integer % 10 + sum_digits(integer // 10)
+
+    except ValueError:
+        return "Ошибка: введите целое число целое число"
+    except TypeError:
+        return "Ошибка: передан неподдерживаемый тип данных"
+
+
+str_integer = input("Введите целое число: ")
+print(sum_digits(str_integer))
+
+# 0, 12.55, 1234, 001, 100, -345, -345.45, dfrg/.
